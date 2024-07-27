@@ -1,7 +1,6 @@
 import React, { useState } from "react";
 import "./App.css";
 
-
 const CarouselComponent = () => {
   const [currentSlide, setCurrentSlide] = useState(0);
   const slides = [
@@ -98,10 +97,15 @@ const FormValidationComponent = () => {
           onChange={validateEmail}
           type="email"
           placeholder="Email"
-          className={`w-full p-2 border rounded mb-4 ${
+          className={`w-full p-2 border rounded mb-2 ${
             email ? (emailValid ? "border-green-500" : "border-red-500") : ""
           }`}
         />
+        {!emailValid && email && (
+          <p className="text-red-500 text-sm mt-1">
+            Please enter a valid email address.
+          </p>
+        )}
       </div>
       <div>
         <input
@@ -109,7 +113,7 @@ const FormValidationComponent = () => {
           onChange={validatePassword}
           type="password"
           placeholder="Password"
-          className={`w-full p-2 border rounded mb-4 ${
+          className={`w-full p-2 border rounded mb-2 ${
             password
               ? passwordValid
                 ? "border-green-500"
@@ -117,14 +121,18 @@ const FormValidationComponent = () => {
               : ""
           }`}
         />
+        {!passwordValid && password && (
+          <p className="text-red-500 text-sm mt-1">
+            Password must be at least 6 characters long.
+          </p>
+        )}
       </div>
-      <button className="p-2 bg-blue-500 text-white w-full rounded-lg shadow-md mt-4">
+      <button  className="p-2 bg-blue-500 text-white w-full rounded-lg shadow-md mt-4">
         Submit
       </button>
     </div>
   );
 };
-
 
 const ScrollableContentComponent = () => {
   const images = [
